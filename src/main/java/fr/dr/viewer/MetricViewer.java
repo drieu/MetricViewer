@@ -30,7 +30,6 @@ public class MetricViewer extends
 
         scene.getStylesheets().add("/stylesheets/metric_viewer.css");
 
-
         stage.setScene(scene);
 
         stage.show();
