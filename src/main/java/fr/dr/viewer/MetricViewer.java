@@ -28,7 +28,8 @@ public class MetricViewer extends
 
         Scene scene = new Scene(root, 300, 275);
 
-        //scene.getStylesheets().add("/stylesheets/metric_viewer.css");
+        scene.getStylesheets().add("/stylesheets/metric_viewer.css");
+
 
         stage.setScene(scene);
 
