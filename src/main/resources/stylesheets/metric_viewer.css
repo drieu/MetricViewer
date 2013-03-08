@@ -1,0 +1,8 @@
+
+#calendarStartDateTextField {
+    -fx-skin:"jfxtras.labs.internal.scene.control.skin.CalendarTimePickerSkin"
+}
+
+#calendarEndDateTextField {
+    -fx-skin:"jfxtras.labs.internal.scene.control.skin.CalendarTimePickerSkin"
+}

@@ -25,7 +25,13 @@ public class MetricViewer extends
         Parent root = FXMLLoader.load(getClass().getResource("/fr/dr/viewer/metric_viewer.fxml"));
 
         stage.setTitle("FXML Welcome");
-        stage.setScene(new Scene(root, 300, 275));
+
+        Scene scene = new Scene(root, 300, 275);
+
+        //scene.getStylesheets().add("/stylesheets/metric_viewer.css");
+
+        stage.setScene(scene);
+
         stage.show();
     }
 }

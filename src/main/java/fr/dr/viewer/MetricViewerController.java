@@ -2,6 +2,7 @@ package fr.dr.viewer;
 
 import javafx.fxml.FXML;
 import javafx.scene.text.Text;
+import jfxtras.labs.scene.control.CalendarTextField;
 
 /**
  * .
@@ -13,4 +14,10 @@ public class MetricViewerController {
 
     @FXML
     private Text info;
+
+    @FXML
+    private CalendarTextField calendarStartDateTextField;
+
+    @FXML
+    private CalendarTextField calendarEndDateTextField;
 }
