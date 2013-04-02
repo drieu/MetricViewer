@@ -24,9 +24,10 @@ public class MetricViewer extends
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/fr/dr/viewer/metric_viewer.fxml"));
 
-        stage.setTitle("FXML Welcome");
+        stage.setTitle("Metric viewer");
 
-        Scene scene = new Scene(root, 300, 275);
+        Scene scene = new Scene(root, 800, 600);
+
 
         scene.getStylesheets().add("/stylesheets/metric_viewer.css");
 

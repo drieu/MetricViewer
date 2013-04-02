@@ -1,8 +1,13 @@
 package fr.dr.viewer;
 
 import javafx.fxml.FXML;
+import javafx.scene.chart.LineChart;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Control;
+import javafx.scene.control.ListView;
 import javafx.scene.text.Text;
 import jfxtras.labs.scene.control.CalendarTextField;
+
 
 /**
  * .
@@ -20,4 +25,18 @@ public class MetricViewerController {
 
     @FXML
     private CalendarTextField calendarEndDateTextField;
+
+	@FXML
+	private ComboBox<String> metricsComboBox;
+
+	@FXML
+	private ListView serversListView;
+
+	@FXML
+	private LineChart<Double, Double> lineChart;
+
+	@FXML
+	protected void initialize() {
+
+	}
 }

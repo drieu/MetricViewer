@@ -58,3 +58,8 @@ Then put
 
 * Execute jfx:build-jar
 * java -jar myjar.jar
+
+## Configuration
+
+
+* Ubuntu 12.10
