@@ -27,10 +27,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
 import javax.persistence.*;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 
 /**
@@ -79,11 +77,9 @@ public class ServersController {
 	 * @param url
 	 */
 	private void saveServer(String name, String url) {
-		boolean result = false;
 		Server server = new Server();
 		server.setName(name);
 		server.setUrl(url);
-		//persist(server);
 		em.getTransaction().begin();
 
 		em.persist(server);
@@ -95,20 +91,6 @@ public class ServersController {
 		refreshObsListFromDb();
 	}
 
-//TODO : understand this ...
-//	public <T extends Entity> T persist(T object) {
-//		em.getTransaction().begin();
-//
-//		em.persist(object);
-//		em.flush();
-//
-//		em.getTransaction().commit();
-//
-//		em.refresh(object);
-//
-//
-//		return object;
-//	}
 
 
 	/**
@@ -132,9 +114,7 @@ public class ServersController {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-
 		em.close();
-
 	}
 
 }

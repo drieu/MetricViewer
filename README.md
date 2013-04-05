@@ -7,6 +7,7 @@ Introduction
 
 This is an small example make with javaFx and Maven.
 To now, it's juste a SNAPSHOT.You should be able to create an excutable jar and to show a window.
+This window have a menu in which you can add a server in database and show a list of them.
 
 TODO :
 * More generic configuration on windows and linux
@@ -63,3 +64,10 @@ Then put
 
 
 * Ubuntu 12.10
+
+Screenshot
+----------
+
+![Main window](docs/main.png)
+<br/>
+![Main window](docs/servers.png)
