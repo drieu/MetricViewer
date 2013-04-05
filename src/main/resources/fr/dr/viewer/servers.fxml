@@ -4,9 +4,13 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.text.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.collections.*?>
+
+<?import fr.dr.viewer.model.Server?>
 <GridPane fx:controller="fr.dr.viewer.controller.ServersController"
 		  xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
-	<padding><Insets top="25" right="25" bottom="10" left="25"/></padding>
+	<padding><Insets top="25" right="5" bottom="10" left="5"/></padding>
 
 	<Text text="Ajout d'un nouveau serveur"
 		  GridPane.columnIndex="0" GridPane.rowIndex="0"
@@ -32,4 +36,25 @@
 
 	<Text fx:id="actiontarget"
 		  GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+
+	<Label style="-fx-font: NORMAL 20 Tahoma;" text="Liste des serveurs"
+		   GridPane.columnIndex="0" GridPane.rowIndex="8">
+	</Label>
+
+	<TableView fx:id="tableView" GridPane.columnIndex="0"
+			   GridPane.rowIndex="9">
+		<columns>
+			<TableColumn text="Nom">
+				<cellValueFactory><PropertyValueFactory property="name" /></cellValueFactory>
+			</TableColumn>
+			<TableColumn text="Url">
+				<cellValueFactory><PropertyValueFactory property="url" /></cellValueFactory>
+			</TableColumn>
+		</columns>
+		<items>
+			<FXCollections fx:factory="observableArrayList">
+				<Server name="test" url="test" />
+			</FXCollections>
+		</items>
+	</TableView>
 </GridPane>

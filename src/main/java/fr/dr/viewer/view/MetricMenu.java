@@ -94,7 +94,7 @@ public class MetricMenu {
 		} catch (IOException e) {
 			e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
 		}
-		Scene serversScene = new Scene(serverRoot, 300, 300);
+		Scene serversScene = new Scene(serverRoot, 600, 600);
 		serversScene.getStylesheets().add("/stylesheets/metric_viewer.css");
 		serversStage.setScene(serversScene);
 		serversStage.show();
