@@ -21,10 +21,17 @@ package fr.dr.viewer.view;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SeparatorMenuItem;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+
+import java.io.IOException;
 
 /**
  * .
@@ -49,7 +56,7 @@ public class MetricMenu {
 
 		menu = new Menu("Edit");
 
-		menu.getItems().add(new MenuItem("Serveur"));
+		menu.getItems().add(createServersMenuItem());
 		menu.getItems().add(new MenuItem("Metric"));
 		menu.getItems().add(new SeparatorMenuItem());
 		menu.getItems().add(new MenuItem("Exit"));
@@ -65,6 +72,32 @@ public class MetricMenu {
 			}
 		});
 		return exit;
+	}
+
+	public MenuItem createServersMenuItem() {
+		MenuItem servers = new MenuItem("Serveur");
+		servers.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent t) {
+				showConfigServers();
+			}
+		});
+		return servers;
+	}
+
+
+	private void showConfigServers() {
+		final Stage serversStage = new Stage(StageStyle.UTILITY);
+		serversStage.setTitle("Configuration des serveurs");
+		Parent serverRoot = null;
+		try {
+			serverRoot = FXMLLoader.load(getClass().getResource("/fr/dr/viewer/servers.fxml"));
+		} catch (IOException e) {
+			e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+		}
+		Scene serversScene = new Scene(serverRoot, 300, 300);
+		serversScene.getStylesheets().add("/stylesheets/metric_viewer.css");
+		serversStage.setScene(serversScene);
+		serversStage.show();
 	}
 
 }

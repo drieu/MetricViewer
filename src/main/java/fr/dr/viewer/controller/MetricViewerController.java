@@ -1,4 +1,4 @@
-package fr.dr.viewer;
+package fr.dr.viewer.controller;
 
 import fr.dr.viewer.model.Metric;
 import fr.dr.viewer.view.MetricMenu;
