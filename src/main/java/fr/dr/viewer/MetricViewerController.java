@@ -1,11 +1,10 @@
 package fr.dr.viewer;
 
 import fr.dr.viewer.model.Metric;
+import fr.dr.viewer.view.MetricMenu;
 import javafx.fxml.FXML;
 import javafx.scene.chart.LineChart;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Control;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import jfxtras.labs.scene.control.CalendarTextField;
 
@@ -13,6 +12,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -43,6 +43,10 @@ public class MetricViewerController {
 	@FXML
 	private LineChart<Double, Double> lineChart;
 
+	@FXML
+	private MenuBar menuBar;
+
+
 
 	private EntityManagerFactory emf;
 	private EntityManager em;
@@ -52,6 +56,26 @@ public class MetricViewerController {
 		emf = Persistence.createEntityManagerFactory("MetricPU");
 		em = emf.createEntityManager();
 
+		initializeMenu();
+	}
+
+
+	private void initializeMenu() {
+		MetricMenu metric = new MetricMenu();
+		metric.initializeMenu(menuBar);
+
+
+	}
+
+
+	/**
+	 * Find all metrics.
+	 * TODO : unused.
+	 * @return
+	 *
+	 */
+	private List<String> findAllMetric() {
+		List<String> results = new ArrayList<>();
 		//  Get all data in person table.
 		try {
 			em.getTransaction().begin();
@@ -61,6 +85,7 @@ public class MetricViewerController {
 			Iterator it = lst.iterator();
 			while (it.hasNext()) {
 				Metric m = (Metric) it.next();
+				results.add(m.getName());
 				System.out.print("Name:" + m.getName());
 			}
 			em.getTransaction().commit();
@@ -69,5 +94,7 @@ public class MetricViewerController {
 		}
 
 		em.close();
+
+		return results;
 	}
 }
