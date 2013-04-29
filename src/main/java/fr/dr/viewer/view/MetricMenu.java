@@ -19,6 +19,7 @@
 package fr.dr.viewer.view;
 
 
+import fr.dr.viewer.controller.MetricViewerController;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;

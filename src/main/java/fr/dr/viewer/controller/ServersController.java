@@ -22,11 +22,14 @@ import fr.dr.viewer.model.Server;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
 import javax.persistence.*;
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 
@@ -63,7 +66,7 @@ public class ServersController {
 	protected void initialize() {
 		emf = Persistence.createEntityManagerFactory("MetricPU");
 		em = emf.createEntityManager();
-
+		refreshObsListFromDb();
 
 	}
 
@@ -89,6 +92,16 @@ public class ServersController {
 
 		em.refresh(server);
 		refreshObsListFromDb();
+
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fr/dr/viewer/metric_viewer.fxml"));
+		try {
+			Parent root = (Parent) loader.load();
+			MetricViewerController controller = (MetricViewerController)loader.getController();
+			controller.refresh();
+		} catch (IOException e) {
+			e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+		}
+
 	}
 
 
@@ -114,7 +127,8 @@ public class ServersController {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-		em.close();
+
+		//em.close();
 	}
 
 }

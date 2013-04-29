@@ -16,38 +16,17 @@
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
-package fr.dr.viewer.model;
+package fr.dr.viewer.model.service;
 
-import javax.persistence.*;
-import java.io.Serializable;
+import fr.dr.viewer.model.Metric;
+
+import java.util.List;
 
 /**
  * .
  * User: drieu
- * Date: 02/04/13
+ * Date: 16/04/13
  */
-@Entity
-@Table(name="tbl_metric")
-public class Metric implements Serializable {
-
-	private static final long serialVersionUID = 1L;
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Basic(optional = false)
-	@Column(name = "id", nullable = false)
-	private Integer id;
-
-
-	@Basic(optional = false)
-	@Column(name = "name", nullable = false)
-	private String name;
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
+public interface MetricService {
+	public List<Metric> listMetric();
 }
