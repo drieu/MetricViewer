@@ -31,18 +31,26 @@ import java.io.Serializable;
 public class Metric implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	@Id
+
+
+    @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Basic(optional = false)
 	@Column(name = "id", nullable = false)
 	private Integer id;
 
-
-	@Basic(optional = false)
+    @Basic(optional = false)
 	@Column(name = "name", nullable = false)
 	private String name;
 
-	public String getName() {
+    public Metric() {
+    }
+
+    public Metric(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
 		return name;
 	}
 

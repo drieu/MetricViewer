@@ -20,6 +20,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import jfxtras.labs.scene.control.CalendarTextField;
+import org.apache.log4j.Logger;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -56,55 +57,48 @@ public class MetricViewerController {
 	@FXML
 	private TableView serversListView;
 
+    @FXML
+    private TableView metricsView;
+
 	@FXML
 	private LineChart<Double, Double> lineChart;
 
 	@FXML
 	private MenuBar menuBar;
 
+    @FXML private TextField metricNameField;
+
+    //@FXML private TableView tableView;
+
+    //private EntityManagerFactory emf;
+
+    //private EntityManager em;
+
+    //private MetricService metricService = new MetricServiceImpl();
+
+    private static final Logger log = Logger.getLogger(MetricViewerController.class);
+
 
 	@FXML protected void handleSubmitButtonAction(ActionEvent event) {
 
 		ObservableList<String> data = metricsComboBox.getItems();
-		List<Metric> metrics = metricService.listMetric();
-		for (Metric m : metrics) {
-			data.add(m.getName());
-		}
+        log.info("Ajout d'une métrique :" + metricNameField.getText());
+        data.add(metricNameField.getText());
+        Metric metric = new Metric(metricNameField.getText());
+        metricsView.getItems().add(metric);
+	}
 
-//		ObservableList<String> data = serversListView.getItems();
+
+
+	@FXML
+	protected void initialize() {
+
+//		ObservableList<String> data = metricsComboBox.getItems();
 //		List<Metric> metrics = metricService.listMetric();
 //		for (Metric m : metrics) {
 //			data.add(m.getName());
 //		}
 	}
-
-	@FXML private TextField metricNameField;
-	@FXML private TableView tableView;
-
-	private EntityManagerFactory emf;
-
-	private EntityManager em;
-
-	private MetricService metricService = new MetricServiceImpl();
-
-	@FXML
-	protected void initialize() {
-
-		ObservableList<String> data = metricsComboBox.getItems();
-		List<Metric> metrics = metricService.listMetric();
-		for (Metric m : metrics) {
-			data.add(m.getName());
-		}
-	}
-
-
-
-
-
-	private void fillListView() {
-
-	}
-
 
 
 	private void initializeMenu() {
@@ -124,21 +118,21 @@ public class MetricViewerController {
 	private List<String> findAllMetric() {
 		List<String> results = new ArrayList<String>();
 		//  Get all data in person table.
-		try {
-			em.getTransaction().begin();
-			//Select all the record from student table
-			Query query = em.createQuery("SELECT pt FROM Metric pt");
-			List lst = query.getResultList();
-			Iterator it = lst.iterator();
-			while (it.hasNext()) {
-				Metric m = (Metric) it.next();
-				results.add(m.getName());
-				System.out.print("Name:" + m.getName());
-			}
-			em.getTransaction().commit();
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
+//		try {
+//			em.getTransaction().begin();
+//			//Select all the record from student table
+//			Query query = em.createQuery("SELECT pt FROM Metric pt");
+//			List lst = query.getResultList();
+//			Iterator it = lst.iterator();
+//			while (it.hasNext()) {
+//				Metric m = (Metric) it.next();
+//				results.add(m.getName());
+//				System.out.print("Name:" + m.getName());
+//			}
+//			em.getTransaction().commit();
+//		} catch (Exception e) {
+//			System.out.println(e.getMessage());
+//		}
 
 		//em.close();
 
@@ -150,23 +144,23 @@ public class MetricViewerController {
 	 */
 	private void refreshserversListView() {
 		//  Get all data in person table.
-		try {
-			em.getTransaction().begin();
-			//Select all the record from student table
-			Query query = em.createQuery("SELECT pt FROM Server pt");
-			List lst = query.getResultList();
-			Iterator it = lst.iterator();
-			while (it.hasNext()) {
-				Server m = (Server) it.next();
-				serversListView.getItems().add(m.getName());
-				System.out.print("=====>Add in server list:" + m.getName());
-			}
-			//tableView.getColumns().get(0).setVisible(false);
-			serversListView.setVisible(true);
-			em.getTransaction().commit();
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
+//		try {
+//			em.getTransaction().begin();
+//			//Select all the record from student table
+//			Query query = em.createQuery("SELECT pt FROM Server pt");
+//			List lst = query.getResultList();
+//			Iterator it = lst.iterator();
+//			while (it.hasNext()) {
+//				Server m = (Server) it.next();
+//				serversListView.getItems().add(m.getName());
+//				System.out.print("=====>Add in server list:" + m.getName());
+//			}
+//			//tableView.getColumns().get(0).setVisible(false);
+//			serversListView.setVisible(true);
+//			em.getTransaction().commit();
+//		} catch (Exception e) {
+//			System.out.println(e.getMessage());
+//		}
 	}
 
 	public void refresh() {

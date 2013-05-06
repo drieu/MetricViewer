@@ -3,6 +3,7 @@
   <persistence-unit name="MetricPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
     <class>fr.dr.viewer.model.Metric</class>
+    <class>fr.dr.viewer.model.Server</class>
 	<properties>
 	  <property name="hibernate.connection.url" value="jdbc:h2:mem:test" />
 	  <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"></property>
